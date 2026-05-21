@@ -22,6 +22,7 @@ public class OrderLinkedList {
 
             OrderNode order = new OrderNode(orderId, customerName, productName, quantity, status, total);
             addNode(order);
+            System.out.println("Order added successfully");
 
         } else {
             ProductNode product = stockInventory.getProductById(productId);
@@ -76,8 +77,6 @@ public class OrderLinkedList {
             }
             temp.next = node;
         }
-
-        System.out.println("Order added successfully");
     }
     
     public void displayList() {

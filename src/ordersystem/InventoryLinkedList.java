@@ -93,7 +93,7 @@ public class InventoryLinkedList {
         while (current != null) {
             if (current.itemId == itemId) {
                 if (current.quantity >= requestedQuantity) { //if the quantity is enough
-                    current.quantity = current.quantity - requestedQuantity; //updating the order quantity
+                    current.quantity -= requestedQuantity; //updating the order quantity
                     System.out.println("Stock updated successfully.");
                     return true;
                 } else {

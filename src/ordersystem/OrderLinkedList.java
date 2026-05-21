@@ -20,7 +20,7 @@ public class OrderLinkedList {
             String status = "Active";
             double total = quantity * product.price;
 
-            OrderNode order = new OrderNode(orderId, customerName, productName, quantity, status, total);
+            OrderNode order = new OrderNode(orderId, customerName, productName, quantity, status, total, productId);
             addNode(order);
             System.out.println("Order added successfully");
 
@@ -44,7 +44,7 @@ public class OrderLinkedList {
             
             order.next = null;
             order.status = "Completed";
-            stockInventory.updateStock(order.orderDetails, order.quantity);
+            stockInventory.updateStock(order.productId, order.quantity);
             fulfilledOrders.addNode(order);
             System.out.println("Order Fullfilled Sucessfully");
         }

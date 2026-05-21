@@ -87,23 +87,25 @@ public class InventoryLinkedList {
     }
 
     // Decrease stock after fulfilling an order
-    public void updateStock(int itemId, int requestedQuantity) {
+    public boolean updateStock(int itemId, int requestedQuantity) {
         ProductNode current = head;
 
         while (current != null) {
             if (current.itemId == itemId) {
                 if (current.quantity >= requestedQuantity) { //if the quantity is enough
-                    current.quantity -= requestedQuantity; //updating the order quantity
+                    current.quantity = current.quantity - requestedQuantity; //updating the order quantity
                     System.out.println("Stock updated successfully.");
+                    return true;
                 } else {
                     System.out.println("Not enough stock.");
                 }
-                return;
+                return false;
             }
             current = current.next;
         }
 
         System.out.println("Product not found.");
+        return false;
     }
 
     // Display all products in inventory

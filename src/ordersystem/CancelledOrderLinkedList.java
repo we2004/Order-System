@@ -57,9 +57,6 @@ public class CancelledOrderLinkedList {
             return;
         }
 
-        System.out.println("CANCELLED ORDERS");
-        System.out.println("=========================");
-
         CancelOrderNode current = head;
         while (current != null) {
             System.out.println("Order ID: " + current.orderId
@@ -68,6 +65,8 @@ public class CancelledOrderLinkedList {
                     + " | Quantity: " + current.quantity
                     + " | Status: " + current.status);
             current = current.next;
+            System.out.println("--------------------");
+
         }
     }
 }

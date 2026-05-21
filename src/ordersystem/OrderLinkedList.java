@@ -26,7 +26,7 @@ public class OrderLinkedList {
 
         } else {
             ProductNode product = stockInventory.getProductById(productId);
-            System.out.println("Item is not available");
+            System.out.println("ordered quantity: " + quantity + " not available");
 
             if (product != null) {
                 System.out.println("available quantity: " + product.quantity);
@@ -41,13 +41,22 @@ public class OrderLinkedList {
         } else {
 
             OrderNode order = head;
-            head = order.next;
 
-            order.next = null;
-            order.status = "Completed";
-            stockInventory.updateStock(order.productId, order.quantity);
-            fulfilledOrders.addNode(order);
-            System.out.println("Order Fullfilled Sucessfully");
+            if (stockInventory.updateStock(order.productId, order.quantity)) {
+                head = order.next;
+                order.next = null;
+                order.status = "Completed";
+                fulfilledOrders.addNode(order);
+                System.out.println("Order Fullfilled Sucessfully");
+            } else {
+                ProductNode product = stockInventory.getProductById(order.productId);
+                System.out.println("Ordered Quantity: "+order.quantity);
+
+                if (product != null) {
+                    System.out.println("available quantity: " + product.quantity);
+                }
+            }
+
         }
 
     }
@@ -85,11 +94,12 @@ public class OrderLinkedList {
             System.out.println("List Is Empty");
         } else {
             OrderNode order = head;
-            System.out.println("ACTIVE ORDERS");
-            System.out.println("=========================");
+
             while (order != null) {
-                System.out.println("Order ID: " + order.orderId + "\nCustomer: " + order.customerName + "\nDetails: " + order.orderDetails + "\nQuantity: " + order.quantity + "\nTotal: " + order.total + "SAR\nStatus: " + order.status);
+                System.out.println("Order ID: " + order.orderId + "\nCustomer: " + order.customerName + "\nDetails: " + order.orderDetails + "\nQuantity: " + order.quantity + "\nTotal: " + order.total + " SAR\nStatus: " + order.status);
                 order = order.next;
+                System.out.println("--------------------");
+
             }
         }
 

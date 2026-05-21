@@ -36,7 +36,6 @@ public class CancelledOrderLinkedList {
 
         if (activeOrders.head != null && activeOrders.head.orderId == orderId) {
             activeOrders.head = activeOrders.head.next;
-            activeOrders.size--;
             System.out.println("Order removed from active orders.");
             return;
         }
@@ -45,7 +44,6 @@ public class CancelledOrderLinkedList {
         while (current != null && current.next != null) {
             if (current.next.orderId == orderId) {
                 current.next = current.next.next;
-                activeOrders.size--;
                 System.out.println("Order removed from active orders.");
                 return;
             }

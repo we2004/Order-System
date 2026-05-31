@@ -17,12 +17,16 @@ public class OrderSystem {
         stockInventory.addProduct(103, "Mechanical Keyboard", 15, 300.00);
         stockInventory.addProduct(104, "4K Monitor", 8, 850.00);
 
+        activeOrders.addOrder("Yasmeen", 101, 1, stockInventory);
+        activeOrders.addOrder("nawal", 102, 2, stockInventory);
+        activeOrders.addOrder("jenan", 101, 1, stockInventory);
+        activeOrders.addOrder("wesal", 101, 1, stockInventory);
+
         System.out.println("\n--- AVAILABLE INVENTORY ---");
         stockInventory.displayStock();
 
         boolean systemRunning = true;
 
-        // 3. Main interactive employee menu
         while (systemRunning) {
             System.out.println("\n=========================================");
             System.out.println("             MENU             ");
@@ -39,7 +43,7 @@ public class OrderSystem {
             switch (choice) {
                 case 1:
                     System.out.println("\n--- AVAILABLE INVENTORY ---");
-                    stockInventory.displayStock(); 
+                    stockInventory.displayStock();
 
                     System.out.print("Enter Customer Name: ");
                     String customerName = scanner.nextLine();

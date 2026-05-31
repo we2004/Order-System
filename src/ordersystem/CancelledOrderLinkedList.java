@@ -9,6 +9,7 @@ public class CancelledOrderLinkedList {
     }
 
     public void cancelOrder(int orderId, OrderLinkedList activeOrders) {
+        
         OrderNode activeOrder = activeOrders.getOrderById(orderId);
 
         if (activeOrder == null) {
@@ -34,6 +35,7 @@ public class CancelledOrderLinkedList {
         }
         System.out.println("Order ID (" + orderId + ") has been successfully archived in CancelledOrderLinkedList.");
 
+        
         if (activeOrders.head != null && activeOrders.head.orderId == orderId) {
             activeOrders.head = activeOrders.head.next;
             System.out.println("Order removed from active orders.");
@@ -41,6 +43,7 @@ public class CancelledOrderLinkedList {
         }
 
         OrderNode current = activeOrders.head;
+        
         while (current != null && current.next != null) {
             if (current.next.orderId == orderId) {
                 current.next = current.next.next;

@@ -8,8 +8,9 @@ public class OrderNode {
     int quantity;
     String status;
     double total;
-    int productId;
     
+    
+    int productId;
     OrderNode next;
     
     public OrderNode(int orderId, String customerName, String orderDetails, int quantity, String status, double total, int productId) {

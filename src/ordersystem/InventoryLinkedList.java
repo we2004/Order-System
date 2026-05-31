@@ -1,8 +1,7 @@
-
 package ordersystem;
 
-
 public class InventoryLinkedList {
+
     private ProductNode head;
 
     public InventoryLinkedList() {
@@ -10,13 +9,12 @@ public class InventoryLinkedList {
     }
 
     // Add new product to inventory
-    public void addProduct(int itemId, String itemName, int quantity,double price) {
-        ProductNode newNode = new ProductNode(itemId, itemName, quantity,price);
+    public void addProduct(int itemId, String itemName, int quantity, double price) {
+        ProductNode newNode = new ProductNode(itemId, itemName, quantity, price);
 
         if (head == null) {
             head = newNode;
-        } 
-        else {  //inserting the node at the end 
+        } else {  //inserting the node at the end 
             ProductNode current = head;
             while (current.next != null) {
                 current = current.next;
@@ -24,42 +22,42 @@ public class InventoryLinkedList {
             current.next = newNode;
         }
     }
-    
+
     // Remove a product from inventory
     public void removeProduct(int itemId) {
 
-    if (head == null) {
-        System.out.println("Inventory is empty.");
-        return;
-    }
+        if (head == null) {
+            System.out.println("Inventory is empty.");
+            return;
+        }
 
-    // If product is first node
-    if (head.itemId == itemId) {
-        head = head.next;
-        System.out.println("Product removed successfully.");
-        return;
-    }
-
-    ProductNode current = head;
-
-    while (current.next != null) {
-
-        if (current.next.itemId == itemId) {
-            current.next = current.next.next;
-
+        // If product is first node
+        if (head.itemId == itemId) {
+            head = head.next;
             System.out.println("Product removed successfully.");
             return;
         }
 
-        current = current.next;
-    }
+        ProductNode current = head;
+
+        while (current.next != null) {
+
+            if (current.next.itemId == itemId) {
+                current.next = current.next.next;
+
+                System.out.println("Product removed successfully.");
+                return;
+            }
+
+            current = current.next;
+        }
 
         System.out.println("Product not found.");
     }
-    
+
     // Search product by ID
     public ProductNode getProductById(int itemId) {
-    ProductNode current = head;
+        ProductNode current = head;
 
         while (current != null) {
             if (current.itemId == itemId) {
@@ -80,7 +78,7 @@ public class InventoryLinkedList {
             if (current.itemId == itemId) {
                 return current.quantity >= requestedQuantity; //return true if the quantity is enough
             }
-            current = current.next;
+            current = current.next; 
         }
 
         return false; //return false if the product dosen't exists and if the quantity isn't enough
